@@ -1,0 +1,41 @@
+#include <stdio.h>
+#define n 7
+
+int buscar(int vet[], int num){
+    for(int i = 0; i < 7; i ++){
+        if (vet[i] == num){
+            char mensagem = printf("o numero esta no indice %i", i);
+            return mensagem;
+        }
+        else{
+            continue;
+        }
+    }
+}
+
+
+int buscaREC(int *vet, int num, int i){
+    if(i >= n){
+        return -1;
+    }
+    if(vet[i] == num){
+        printf("Esta no indice %i", i);
+        return i;
+    }
+    printf("não é o indice %i, agora vamos para o indice %i\n", i, i+1);
+    return buscaREC(vet, num, i+1);
+}
+
+
+int main()
+{
+    int vet[n] = {23, 4, 67, -8, 54, 90, 21};
+    int num = 0;
+    printf("Escolha um número da lista (23, 4, 67, -8, 54, 90, 21):");
+    scanf("%i", &num);
+    int i = 0;
+    
+    buscaREC(vet, num, i);
+
+    return 0;
+}
